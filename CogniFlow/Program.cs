@@ -1,4 +1,8 @@
 using CogniFlow.Data;
+using CogniFlow.Repositories.Interfaces;
+using CogniFlow.Repositories;
+using CogniFlow.Services.Interfaces;
+using CogniFlow.Services;
 using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,6 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 DotNetEnv.Env.Load();
 
@@ -23,6 +30,8 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 
 app.UseHttpsRedirection();
+
+app.UseRouting();
 
 app.UseAuthorization();
 
