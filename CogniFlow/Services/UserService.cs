@@ -12,10 +12,10 @@ namespace CogniFlow.Services
     {
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
-        private readonly IPasswordHandler _passwordHandler;
+        private readonly IPasswordUtility _passwordHandler;
         private readonly IRoleRepository _roleRepository;
 
-        public UserService(IUserRepository userRepository, IMapper mapper, IPasswordHandler passwordHandler, IRoleRepository roleRepository)
+        public UserService(IUserRepository userRepository, IMapper mapper, IPasswordUtility passwordHandler, IRoleRepository roleRepository)
         {
             _userRepository = userRepository;
             _mapper = mapper;
@@ -108,7 +108,7 @@ namespace CogniFlow.Services
             var isEmailUnique = await _userRepository.IsEmailUniqueAsync(email);
             if (!isEmailUnique)
             {
-                throw new ArgumentException("A user with this email already exists");
+                throw new ArgumentException("A user with this email is already exists");
             }
         }
 

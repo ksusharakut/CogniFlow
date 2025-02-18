@@ -2,7 +2,7 @@
 
 namespace CogniFlow.Utilities
 {
-    public class PasswordHandler : IPasswordHandler
+    public class PasswordUtility : IPasswordUtility
     {
         public string GenerateSalt()
         {

@@ -8,19 +8,18 @@ using Microsoft.EntityFrameworkCore;
 using CogniFlow.Mappings;
 using CogniFlow.Utilities.Interfaces;
 using CogniFlow.Utilities;
+using CogniFlow;
 
 var builder = WebApplication.CreateBuilder(args);
+var services = builder.Services;
 
 // Add services to the container.
 
-builder.Services.AddControllers();
-
-builder.Services.AddAutoMapper(typeof(UserProfile));
-
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IPasswordHandler, PasswordHandler>();
-builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+services.AddControllers();
+services.AddAutoMapperProfiles();
+services.AddRepositories();
+services.AddServices();
+services.AddUtilities();
 
 DotNetEnv.Env.Load();
 
