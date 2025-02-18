@@ -76,7 +76,7 @@ namespace CogniFlow.Controllers
             try
             {
                 var createdUser = await _userService.CreateUserAsync(userCreateDTO);
-                return Ok(createdUser);
+                return Ok(userCreateDTO);
             }
             catch (ArgumentException ex)
             {

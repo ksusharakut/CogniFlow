@@ -21,11 +21,13 @@ namespace CogniFlow
         public static void AddServices(this IServiceCollection services)
         {
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IRoleService, RoleService>();
         }
 
         public static void AddAutoMapperProfiles(this IServiceCollection services)
         {
             services.AddAutoMapper(typeof(UserProfile).Assembly);
+            services.AddAutoMapper(typeof(RoleProfile).Assembly);
         }
 
         public static void AddUtilities(this IServiceCollection services)
